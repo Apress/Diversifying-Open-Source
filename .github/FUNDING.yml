@@ -1,0 +1,34 @@
+# GitHub Sponsors Configuration
+
+# Individual sponsors
+github: [username1, username2, username3]
+
+# Organization sponsors
+github: [org1, org2, org3]
+
+# Patreon sponsors
+patreon: [patreon-username]
+
+# Open Collective
+open_collective: [collective-name]
+
+# Community Bridge
+community_bridge: [project-name]
+
+# Liberapay
+liberapay: [liberapay-username]
+
+# Ko-fi
+ko_fi: [ko-fi-username]
+
+# Tidelift
+tidelift: [package-name]
+
+# Custom funding links
+custom: 
+  - link: https://example.com/donate
+    text: Donate via PayPal
+  - link: https://example.com/support
+    text: Support via Stripe
+  - link: https://example.com/sponsor
+    text: Sponsor via Custom Platform

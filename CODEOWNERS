@@ -1,0 +1,258 @@
+# Code Owners
+
+This file defines individuals or teams that are responsible for code in specific parts of the repository. When a pull request is opened, the code owners will automatically be requested for review.
+
+## Global Owners
+
+# Global code owners - these users will be requested for review on every PR
+* @maintainer1 @maintainer2
+
+## Documentation
+
+# Documentation files
+*.md @docs-team
+README.md @maintainer1
+CONTRIBUTING.md @maintainer1
+CODE_OF_CONDUCT.md @maintainer1
+LICENSE.md @maintainer1
+SECURITY.md @security-team
+CHANGELOG.md @maintainer1
+
+# Documentation directory
+/docs/ @docs-team
+
+## Source Code
+
+# Core application code
+/src/ @core-team
+/src/core/ @core-team @senior-developer1
+/src/api/ @api-team @senior-developer2
+/src/ui/ @ui-team @frontend-lead
+/src/utils/ @core-team
+
+# Configuration files
+package.json @maintainer1 @devops-team
+package-lock.json @maintainer1 @devops-team
+yarn.lock @maintainer1 @devops-team
+tsconfig.json @core-team
+webpack.config.js @frontend-lead @devops-team
+babel.config.js @frontend-lead @devops-team
+
+# Environment and deployment
+.env* @devops-team @maintainer1
+Dockerfile @devops-team
+docker-compose.yml @devops-team
+.github/ @devops-team @maintainer1
+
+## Testing
+
+# Test files
+/test/ @test-team @core-team
+/__tests__/ @test-team @core-team
+*.test.js @test-team @core-team
+*.test.ts @test-team @core-team
+*.spec.js @test-team @core-team
+*.spec.ts @test-team @core-team
+
+# Test configuration
+jest.config.js @test-team @devops-team
+cypress.config.js @test-team @devops-team
+
+## Build and CI/CD
+
+# Build configuration
+/build/ @devops-team @maintainer1
+/dist/ @devops-team @maintainer1
+/public/ @frontend-lead @ui-team
+
+# CI/CD files
+.github/workflows/ @devops-team @maintainer1
+.github/actions/ @devops-team @maintainer1
+.github/ISSUE_TEMPLATE/ @maintainer1 @docs-team
+.github/PULL_REQUEST_TEMPLATE.md @maintainer1 @docs-team
+
+## Database
+
+# Database files
+/migrations/ @database-team @backend-lead
+/seeds/ @database-team @backend-lead
+*.sql @database-team @backend-lead
+
+## Security
+
+# Security-related files
+SECURITY.md @security-team @maintainer1
+/.github/security/ @security-team @maintainer1
+
+# Authentication and authorization
+/src/auth/ @security-team @backend-lead
+/src/middleware/auth.js @security-team @backend-lead
+
+## API and Backend
+
+# API routes and controllers
+/src/routes/ @api-team @backend-lead
+/src/controllers/ @api-team @backend-lead
+/src/models/ @database-team @backend-lead
+/src/services/ @backend-lead @core-team
+
+# Server configuration
+server.js @backend-lead @devops-team
+app.js @backend-lead @devops-team
+
+## Frontend
+
+# React components
+/src/components/ @ui-team @frontend-lead
+/src/pages/ @ui-team @frontend-lead
+/src/hooks/ @frontend-lead @ui-team
+/src/context/ @frontend-lead @ui-team
+
+# Styling
+/src/styles/ @ui-team @frontend-lead
+*.css @ui-team @frontend-lead
+*.scss @ui-team @frontend-lead
+*.sass @ui-team @frontend-lead
+
+# Assets
+/src/assets/ @ui-team @frontend-lead
+/public/images/ @ui-team @frontend-lead
+/public/icons/ @ui-team @frontend-lead
+
+## Mobile
+
+# Mobile-specific code
+/mobile/ @mobile-team @mobile-lead
+/src/mobile/ @mobile-team @mobile-lead
+
+## Platform-Specific
+
+# Platform-specific implementations
+/src/platforms/ @platform-team @senior-developer1
+
+## Third-Party Integrations
+
+# Integration code
+/src/integrations/ @integrations-team @backend-lead
+/src/plugins/ @plugins-team @core-team
+
+## Performance and Monitoring
+
+# Performance-related code
+/src/performance/ @performance-team @senior-developer1
+/src/monitoring/ @devops-team @senior-developer2
+
+## Localization
+
+# Internationalization
+/src/i18n/ @i18n-team @frontend-lead
+/locales/ @i18n-team @frontend-lead
+
+## Examples and Demos
+
+# Example code and demos
+/examples/ @docs-team @core-team
+/demos/ @docs-team @core-team
+
+## Scripts
+
+# Build and utility scripts
+/scripts/ @devops-team @maintainer1
+*.sh @devops-team @maintainer1
+*.bat @devops-team @maintainer1
+
+## Configuration Files
+
+# Linting and formatting
+.eslintrc.js @core-team @devops-team
+.prettierrc @core-team @devops-team
+.editorconfig @core-team @devops-team
+
+# Git configuration
+.gitignore @maintainer1 @devops-team
+.gitattributes @maintainer1 @devops-team
+
+# IDE configuration
+.vscode/ @devops-team @maintainer1
+.idea/ @devops-team @maintainer1
+
+---
+
+## Code Owners Guidelines
+
+### Team Structure
+
+- **@maintainer1, @maintainer2**: Project maintainers with global oversight
+- **@core-team**: Core development team responsible for main functionality
+- **@api-team**: Backend API development team
+- **@ui-team**: Frontend UI/UX team
+- **@frontend-lead**: Frontend team lead
+- **@backend-lead**: Backend team lead
+- **@devops-team**: DevOps and infrastructure team
+- **@test-team**: Quality assurance and testing team
+- **@docs-team**: Documentation team
+- **@security-team**: Security team
+- **@database-team**: Database administration team
+- **@mobile-team**: Mobile development team
+- **@mobile-lead**: Mobile team lead
+- **@platform-team**: Platform-specific development team
+- **@integrations-team**: Third-party integrations team
+- **@plugins-team**: Plugin development team
+- **@performance-team**: Performance optimization team
+- **@i18n-team**: Internationalization team
+- **@senior-developer1, @senior-developer2**: Senior developers with expertise in specific areas
+
+### Rules and Guidelines
+
+1. **File Patterns**: Use glob patterns to match files and directories
+2. **Order Matters**: More specific patterns should come after general ones
+3. **Multiple Owners**: Use spaces to separate multiple owners
+4. **Team vs Individual**: Use team handles for broader coverage, individual handles for specific expertise
+5. **Fallback**: Always have a fallback owner for critical files
+
+### Best Practices
+
+- **Critical Files**: Always assign maintainers to critical configuration files
+- **Security Files**: Assign security team to security-related files
+- **Documentation**: Assign docs team to documentation files
+- **Tests**: Assign test team to test files
+- **Build Files**: Assign devops team to build and deployment files
+
+### Adding New Owners
+
+When adding new owners:
+
+1. **Update Teams**: Add new team members to appropriate teams
+2. **Update Patterns**: Add new file patterns as needed
+3. **Review Assignments**: Ensure all files have appropriate owners
+4. **Test Changes**: Verify that CODEOWNERS file syntax is correct
+
+### Emergency Override
+
+In emergency situations, maintainers can override CODEOWNERS by:
+
+1. **Direct Merge**: Merging PRs without waiting for reviews
+2. **Hotfix Process**: Using emergency hotfix procedures
+3. **Temporary Assignment**: Temporarily assigning different reviewers
+
+### Monitoring and Maintenance
+
+- **Regular Review**: Review CODEOWNERS file quarterly
+- **Team Changes**: Update when team members change
+- **File Structure**: Update when project structure changes
+- **Performance**: Monitor review times and adjust assignments
+
+### Troubleshooting
+
+Common issues and solutions:
+
+- **Syntax Errors**: Check GitHub's CODEOWNERS syntax documentation
+- **Missing Reviews**: Ensure owners have proper permissions
+- **Too Many Reviews**: Consolidate owners for frequently changed files
+- **No Reviews**: Add fallback owners for all file patterns
+
+### Resources
+
+- [GitHub CODEOWNERS Documentation](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
+- [CODEOWNERS Best Practices](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-file-location)
+- [Glob Pattern Reference](https://git-scm.com/docs/gitignore#_pattern_format)
