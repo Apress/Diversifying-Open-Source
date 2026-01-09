@@ -63,10 +63,13 @@ Each folder represents a different mode of communication in open source projects
 
 ---
 
+```
 standard-blueprint/
 ├── README.md
 ├── .gitignore
 ├── .gitattributes
+├── LICENSE
+├── tests/
 │
 ├── Daily/
 │   ├── README.md
@@ -113,9 +116,10 @@ standard-blueprint/
     │   ├── bug_report.md
     │   ├── feature_request.md
     │   └── governance_change.md
+    ├── CODEOWNER
     └── workflows/
-        ├── lint-docs.yml
-        └── policy-checks.yml
+
+```
 
 ---
 
