@@ -1,54 +1,20 @@
-# Pull Request
+## What changed
+- [...]
 
-## Description
+## Why this is needed
+- [...]
 
-<!-- Provide a brief description of the changes in this PR -->
+## How this was tested
+- [ ] Tests added/updated
+- [ ] Manual verification described below
 
-## Type of Change
-
-<!-- Mark the relevant option with an 'x' -->
-
-- [ ] Bug fix
-- [ ] New feature
-- [ ] Breaking change
-- [ ] Documentation update
-- [ ] Code refactoring
-- [ ] Performance improvement
-- [ ] Governance change
-
-## Related Issues
-
-<!-- Link to related issues using #issue-number -->
-
-Closes #
-
-## Changes Made
-
-<!-- List the main changes made in this PR -->
-
-- 
-- 
-- 
-
-## Testing
-
-<!-- Describe the testing performed -->
-
-- [ ] Unit tests added/updated
-- [ ] Integration tests added/updated
-- [ ] Manual testing performed
+## Non-code impact (if applicable)
+- Documentation:
+- Accessibility:
+- Localization:
+- Community/support:
 
 ## Checklist
-
-- [ ] Code follows project style guidelines
-- [ ] Self-review completed
-- [ ] Comments added for complex code
-- [ ] Documentation updated
-- [ ] No new warnings generated
-- [ ] Tests pass locally
-- [ ] Changes tested on multiple platforms (if applicable)
-
-## Additional Notes
-
-<!-- Add any additional context or notes -->
-
+- [ ] I read `CONTRIBUTING.md`
+- [ ] I agree with `CODE_OF_CONDUCT.md`
+- [ ] Relevant docs updated
