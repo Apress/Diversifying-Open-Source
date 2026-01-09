@@ -28,6 +28,7 @@ It exists to protect people, not to police disagreement.
 ## Reporting
 
 Reports can be made via:
+
 - Email: [...]
 - Backup contact: [...]
 
@@ -38,6 +39,7 @@ Reports are handled confidentially.
 ## Response process
 
 Responses prioritize:
+
 - safety
 - accountability
 - repair when possible

@@ -1,15 +1,19 @@
 # Metrics
 
-This directory contains documentation about how the project measures and evaluates its practices.
+This directory contains documentation about how the project measures and
+evaluates its practices.
 
-Metrics exist to make patterns visible and to support evidence-based decisions.
-They are not treated as neutral or objective, but as tools that require interpretation and context.
+Metrics exist to make patterns visible and to support evidence-based
+decisions.
+They are not treated as neutral or objective, but as tools that require
+interpretation and context.
 
 ---
 
 ## Purpose
 
 Metrics documentation helps:
+
 - make measurement choices explicit
 - understand what is being measured and why
 - identify gaps and biases in data collection

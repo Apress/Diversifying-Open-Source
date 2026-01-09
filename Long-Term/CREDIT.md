@@ -10,6 +10,7 @@ It exists to prevent work from becoming invisible after the fact.
 ## What is credited
 
 Credit may include:
+
 - code and architecture
 - documentation and review
 - accessibility and localization
@@ -22,6 +23,7 @@ Credit may include:
 ## How credit is assigned
 
 Credit draws from:
+
 - contribution taxonomy labels
 - changelog entries
 - decision records

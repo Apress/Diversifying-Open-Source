@@ -6,7 +6,8 @@ This directory contains procedural and process documentation for the project.
 
 - **[SECURITY.md](SECURITY.md)** - Security policies and procedures
 - **[ACCESSIBILITY.md](ACCESSIBILITY.md)** - Accessibility guidelines
-- **[LOCALIZATION.md](LOCALIZATION.md)** - Localization and internationalization information
+- **[LOCALIZATION.md](LOCALIZATION.md)** - Localization and
+  internationalization information
 - **[FUNDING.md](FUNDING.md)** - Funding and financial information
 - **[CHANGELOG.md](CHANGELOG.md)** - Project changelog
 - **[ADOPTERS.md](ADOPTERS.md)** - List of project adopters
@@ -16,7 +17,9 @@ This directory contains procedural and process documentation for the project.
 
 ## Purpose
 
-These documents define processes, procedures, and standards that guide project operations. They are updated less frequently than daily operational documents but more frequently than long-term governance documents.
+These documents define processes, procedures, and standards that guide project
+operations. They are updated less frequently than daily operational documents
+but more frequently than long-term governance documents.
 
 ## Procedural Checklist
 

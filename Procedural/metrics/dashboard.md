@@ -3,6 +3,7 @@
 This file documents **which signals we look at**, not targets.
 
 Example indicators:
+
 - % of issues with first response < X days
 - Distribution of review activity
 - Ratio of code to non-code contributions

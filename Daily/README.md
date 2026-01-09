@@ -12,7 +12,10 @@ This directory contains documents and guidelines for day-to-day project operatio
 
 ## Purpose
 
-These documents are designed to be referenced frequently and updated as needed to reflect current operational practices. They should be easily accessible and clearly written to help both new and existing contributors understand how to participate effectively in the project.
+These documents are designed to be referenced frequently and updated as needed
+to reflect current operational practices. They should be easily accessible and
+clearly written to help both new and existing contributors understand how to
+participate effectively in the project.
 
 ## Daily Communication Checklist
 

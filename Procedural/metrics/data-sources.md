@@ -3,6 +3,7 @@
 This document lists the data sources used for metrics and how they are collected.
 
 Transparency about data sources helps:
+
 - understand what is being measured
 - identify potential biases or gaps
 - enable independent verification
@@ -82,6 +83,7 @@ Transparency about data sources helps:
 ## Updates
 
 This document is updated when:
+
 - new data sources are added
 - collection methods change
 - data quality issues are identified

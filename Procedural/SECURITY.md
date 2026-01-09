@@ -2,7 +2,8 @@
 
 This document defines how security issues are handled.
 
-Its purpose is to make security reporting predictable and safe, without requiring ad-hoc decisions in moments of urgency.
+Its purpose is to make security reporting predictable and safe, without
+requiring ad-hoc decisions in moments of urgency.
 
 ---
 
@@ -38,6 +39,7 @@ Do not open a public issue for security vulnerabilities.
 ## Supported versions
 
 List which versions receive security fixes:
+
 - Supported: [...]
 - Unsupported: [...]
 

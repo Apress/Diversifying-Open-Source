@@ -9,6 +9,7 @@ The goal is shared understanding and long-term maintainability.
 ## For reviewers
 
 When reviewing:
+
 - explain *why* a change is requested
 - distinguish between suggestions and requirements
 - avoid assuming prior knowledge
@@ -21,6 +22,7 @@ Ask questions before making assumptions.
 ## For contributors
 
 When receiving review:
+
 - questions are not criticism
 - requests for changes are part of the process
 - you may ask for clarification or alternatives
@@ -41,6 +43,7 @@ If feedback feels unclear or overwhelming, say so.
 ## Disagreements
 
 If consensus is hard to reach:
+
 1. clarify the underlying concern
 2. document trade-offs
 3. ask for a third perspective if needed

@@ -1,6 +1,7 @@
 # Long-Term Governance
 
-This directory contains long-term governance and legal documents for the project that carry **responsibility, legitimacy, and memory across time**.
+This directory contains long-term governance and legal documents for the
+project that carry **responsibility, legitimacy, and memory across time**.
 
 ## Contents
 
@@ -14,9 +15,12 @@ This directory contains long-term governance and legal documents for the project
 
 ## Purpose
 
-These documents define the long-term structure, governance, and legal framework of the project. They are updated infrequently and represent foundational commitments and structures.
+These documents define the long-term structure, governance, and legal
+framework of the project. They are updated infrequently and represent
+foundational commitments and structures.
 Long-term is not about daily coordination or repeatable procedure.
-It defines who can decide, who is accountable, how harm is addressed, and what obligations persist beyond individual contributors.
+It defines who can decide, who is accountable, how harm is addressed, and
+what obligations persist beyond individual contributors.
 
 These documents are rarely read.
 When they are needed, they must be trustworthy.
@@ -31,3 +35,4 @@ Changes here should be slow, deliberate, and explicitly recorded.
 - [ ] Harm response is defined
 - [ ] License and obligations are clear
 - [ ] Credit preserves institutional memory
+

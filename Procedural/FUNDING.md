@@ -9,6 +9,7 @@ Its purpose is to make financial influence visible and reviewable.
 ## Funding sources
 
 List current sources:
+
 - Grants: [...]
 - Sponsorships: [...]
 - Donations: [...]
@@ -19,6 +20,7 @@ List current sources:
 ## Use of funds
 
 Funds may be used for:
+
 - maintenance work
 - infrastructure costs
 - accessibility improvements

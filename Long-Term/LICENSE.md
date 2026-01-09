@@ -9,6 +9,7 @@ This project is licensed under:
 ## Rationale
 
 Explain why this license was chosen:
+
 - alignment with project values
 - compatibility considerations
 - downstream implications

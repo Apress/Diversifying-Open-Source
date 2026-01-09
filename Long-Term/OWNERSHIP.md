@@ -1,6 +1,7 @@
 # Ownership and Accountability
 
-This document clarifies **who holds responsibility** for different parts of the project.
+This document clarifies **who holds responsibility** for different parts of
+the project.
 
 Ownership here does not imply control or authorship.
 It defines accountability and stewardship.
@@ -24,6 +25,7 @@ List ownership areas and roles:
 ## What ownership means
 
 Owners are responsible for:
+
 - maintaining continuity
 - responding to issues in their area
 - documenting decisions and trade-offs

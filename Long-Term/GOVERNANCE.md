@@ -3,9 +3,9 @@
 This document functions as the **constitutional foundation** of the project.
 
 Governance defines the basic conditions under which the project operates:
-how authority is exercised, how responsibility is distributed,
-how inclusion and equity are safeguarded,
-and how continuity is guaranteed beyond individual contributors.
+how authority is exercised, how responsibility is distributed, how inclusion
+and equity are safeguarded, and how continuity is guaranteed beyond
+individual contributors.
 
 It exists to ensure that decisions do not depend on proximity, availability,
 informal influence, or accumulated power.
@@ -51,6 +51,7 @@ This document defines what must hold across time.
 This governance document functions as a **constitution**.
 
 It establishes:
+
 - ethical boundaries that cannot be overridden by convenience
 - guarantees of equitable participation
 - limits on authority and decision-making power
@@ -69,19 +70,22 @@ Describe the governance model used by the project:
 - hybrid
 
 The chosen model must be documented along with:
+
 - who participates
 - how decisions are reached
 - how disagreement is handled
 - how outcomes are recorded
 
 No governance model is neutral.
-The project commits to reviewing whether the model continues to support equitable participation and shared responsibility.
+The project commits to reviewing whether the model continues to support
+equitable participation and shared responsibility.
 
 ---
 
 ## Participation, diversity, and equity
 
 Participation in governance may include:
+
 - maintainers
 - contributors
 - other stakeholders affected by the project
@@ -89,13 +93,15 @@ Participation in governance may include:
 Eligibility criteria and expectations must be explicit.
 
 Governance actively works to:
+
 - lower barriers to participation
 - support asynchronous and distributed input
 - avoid reliance on informal or opaque networks
 
 Silence, absence, or lack of availability is not treated as consent.
 
-Patterns of exclusion, underrepresentation, or overburdening are treated as governance concerns requiring attention and action.
+Patterns of exclusion, underrepresentation, or overburdening are treated as
+governance concerns requiring attention and action.
 
 ---
 
@@ -110,7 +116,8 @@ All governance decisions follow a documented process:
 5. A decision is reached using the agreed model
 6. The outcome and rationale are documented
 
-Decisions that affect governance, ethics, inclusion, or long-term responsibility must be recorded in the decision log.
+Decisions that affect governance, ethics, inclusion, or long-term
+responsibility must be recorded in the decision log.
 
 ---
 
@@ -118,9 +125,11 @@ Decisions that affect governance, ethics, inclusion, or long-term responsibility
 
 Leadership in this project is understood as **stewardship**, not ownership.
 
-Leaders are entrusted with responsibility for continuity, care, and coordination, not unilateral control.
+Leaders are entrusted with responsibility for continuity, care, and
+coordination, not unilateral control.
 
 Leadership roles must have:
+
 - clear scope and limits
 - explicit responsibilities
 - documented expectations
@@ -148,11 +157,13 @@ Continuity must not depend on any single individual.
 The project guarantees **safe, dignified paths to step down**.
 
 Stepping down:
+
 - does not require justification
 - does not imply failure
 - should prioritize continuity and handover
 
 Sunsetting a role or project includes:
+
 - documenting why is ending
 - redistributing or retiring responsibilities
 - ensuring no hidden obligations remain
@@ -164,12 +175,14 @@ Exit mechanisms are a governance responsibility, not a personal burden.
 ## Ethics and accountability
 
 Ethical commitments include:
+
 - respect for human rights and dignity
 - opposition to discrimination and harassment
 - care for contributors and users
 - accountability for impact, not only intent
 
-Violations of these commitments are addressed through established conduct and restorative processes.
+Violations of these commitments are addressed through established conduct
+and restorative processes.
 
 Ethical concerns cannot be dismissed as interpersonal issues.
 
@@ -177,9 +190,12 @@ Ethical concerns cannot be dismissed as interpersonal issues.
 
 ## Relationship to metrics and signals
 
-Governance decisions may be informed by procedural signals, including community health and sustainability metrics (such as those inspired by CHAOSS).
+Governance decisions may be informed by procedural signals, including
+community health and sustainability metrics (such as those inspired by
+CHAOSS).
 
 Metrics:
+
 - provide signals, not judgments
 - inform reflection, not legitimacy
 - never replace lived experience or qualitative input
@@ -203,10 +219,11 @@ Institutional memory is a shared responsibility.
 
 This governance document is reviewed periodically.
 
-Amendments require:  
-- explicit proposal  
-- documented discussion  
-- clear agreement  
+Amendments require:
+
+- explicit proposal
+- documented discussion
+- clear agreement
 - recorded outcome  
 
 Changes to governance are treated as long-term events and should not be rushed.
@@ -218,8 +235,10 @@ Changes to governance are treated as long-term events and should not be rushed.
 No governance document can anticipate every situation.
 
 When gaps appear:
+
 - care and safety take precedence
 - qualitative experience is valued
 - governance adapts rather than defers responsibility
 
-Governance exists to protect the conditions for equitable collaboration over time.
+Governance exists to protect the conditions for equitable collaboration over
+time.

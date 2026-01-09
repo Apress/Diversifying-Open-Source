@@ -9,6 +9,7 @@ Maintainers are stewards of continuity, not gatekeepers.
 ## Maintainer responsibilities
 
 Maintainers may:
+
 - review and merge changes
 - facilitate discussions
 - uphold procedural and long-term commitments
@@ -28,6 +29,7 @@ Maintainers may:
 ## Becoming a maintainer
 
 Describe:
+
 - eligibility criteria
 - nomination process
 - decision mechanism

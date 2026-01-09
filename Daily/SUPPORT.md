@@ -20,6 +20,7 @@ If you are unsure where your question belongs, start with the discussion channel
 ## What to include
 
 When asking for help, try to include:
+
 - what you are trying to do
 - what you expected to happen
 - what actually happened

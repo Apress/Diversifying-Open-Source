@@ -9,6 +9,7 @@ The goal is to prevent responsibility from concentrating through habit or bias.
 ## Roles covered
 
 Examples:
+
 - meeting facilitator
 - note-taker
 - issue triage

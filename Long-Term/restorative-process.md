@@ -9,6 +9,7 @@ It complements the Code of Conduct with operational detail.
 ## When restorative approaches apply
 
 Restorative processes may be used when:
+
 - participants consent
 - safety can be maintained
 - repair is possible
