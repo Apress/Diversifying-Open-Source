@@ -1,0 +1,112 @@
+labels:
+  - name: code
+    color: "0052cc"
+    description: Implementation, refactoring, fixes
+
+  - name: architecture
+    color: "5319e7"
+    description: Structural or design-level changes
+
+  - name: performance
+    color: "fbca04"
+    description: Benchmarking and optimization
+
+  - name: security
+    color: "b60205"
+    description: Security fixes and hardening
+
+  - name: security-review
+    color: "b60205"
+    description: Threat review and dependency risk checks
+
+  - name: repo-audit
+    color: "d93f0b"
+    description: Repository hygiene and policy checks
+
+  - name: cleanup
+    color: "ededed"
+    description: Maintenance work that prevents drift
+
+  - name: triage
+    color: "cccccc"
+    description: Sorting, labeling, and routing issues
+
+  - name: documentation
+    color: "0075ca"
+    description: Writing and restructuring documentation
+
+  - name: examples
+    color: "0075ca"
+    description: Tutorials and sample usage
+
+  - name: research
+    color: "0e8a16"
+    description: Investigation and background work
+
+  - name: testing
+    color: "c2e0c6"
+    description: Test creation and QA
+
+  - name: bug-reproduction
+    color: "c2e0c6"
+    description: Reproducing and documenting bugs
+
+  - name: accessibility
+    color: "006b75"
+    description: Reducing access barriers
+
+  - name: localization
+    color: "006b75"
+    description: Contextual adaptation across languages and regions
+
+  - name: usability
+    color: "006b75"
+    description: Workflow clarity and UX
+
+  - name: support
+    color: "bfdadc"
+    description: Helping users and contributors
+
+  - name: moderation
+    color: "e99695"
+    description: Maintaining community safety
+
+  - name: conflict-resolution
+    color: "e99695"
+    description: Restorative and relational work
+
+  - name: facilitation
+    color: "bfdadc"
+    description: Running meetings and discussions
+
+  - name: mentorship
+    color: "bfdadc"
+    description: Onboarding and guidance
+
+  - name: adoption-advocate
+    color: "1d76db"
+    description: Supporting adoption relationships
+
+  - name: case-study
+    color: "1d76db"
+    description: Documenting real-world use
+
+  - name: user-liaison
+    color: "1d76db"
+    description: Maintaining feedback loops
+
+  - name: governance
+    color: "5319e7"
+    description: Policy and decision process work
+
+  - name: fundraising
+    color: "f9d0c4"
+    description: Grants and sponsorship
+
+  - name: financial-stewardship
+    color: "f9d0c4"
+    description: Budgeting and transparency
+
+  - name: operations
+    color: "fef2c0"
+    description: Infrastructure and automation

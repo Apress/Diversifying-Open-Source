@@ -1,0 +1,38 @@
+name: Lint Documentation
+
+on:
+  pull_request:
+    paths:
+      - '**.md'
+      - '**.mdx'
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - '**.md'
+      - '**.mdx'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+
+      - name: Lint markdown files
+        run: markdownlint '**/*.md' --ignore node_modules
+
+      - name: Check for broken links
+        uses: peter-evans/link-checker@v1
+        with:
+          check-modified-files-only: true
+

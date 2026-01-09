@@ -1,148 +1,206 @@
-# Project Name
+This repository is a practical **template and implementation blueprint** for the book:
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Contributors](https://img.shields.io/github/contributors/username/project-name.svg)](https://github.com/username/project-name/graphs/contributors)
-[![Issues](https://img.shields.io/github/issues/username/project-name.svg)](https://github.com/username/project-name/issues)
-[![Pull Requests](https://img.shields.io/github/issues-pr/username/project-name.svg)](https://github.com/username/project-name/pulls)
+**Diversifying Open Source**  
+*An Open Standards Playbook for Inclusive and Equitable Tech Projects*  
+by Paloma Oliveira  
+Apress / Springer Nature, 2025  
+DOI: https://doi.org/10.1007/979-8-8688-0769-5
 
-A brief description of what your project does and why it's useful.
+The repository translates the book’s conceptual framework into a **usable repository architecture**.  
+It is not an example project; it is a **patterned structure** meant to be copied, adapted, and applied.
 
-## Table of Contents
+---
 
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Support](#support)
+## Relationship to the book
 
-## Features
+The book argues that open standards are not only technical specifications, but **architectural instruments** that shape participation, labor, governance, and long-term responsibility in free and open source projects.
 
-- Feature 1: Description of feature 1
-- Feature 2: Description of feature 2
-- Feature 3: Description of feature 3
+This repository operationalizes that argument.
 
-## Installation
+In particular, it implements the model developed in the chapter **“Making It a Standard”**, where standards are treated as:
+- lived practices,
+- mechanisms for distributing responsibility,
+- tools for addressing participation, labor, and legitimacy in open collaboration.
 
-### Prerequisites
+This blueprint provides the **concrete repository form** of that model.
 
-- [Prerequisite 1](link-to-prerequisite-1)
-- [Prerequisite 2](link-to-prerequisite-2)
+---
 
-### Install from source
+## This template is designed to:
+- make contribution pathways explicit (including non-code work),
+- reduce information imbalance through transparent communication,
+- formalize governance and role rotation,
+- embed restorative conflict handling,
+- document funding and influence,
+- keep security and release integrity legible and accountable.
 
-```bash
-# Clone the repository
-git clone https://github.com/username/project-name.git
-cd project-name
+---
 
-# Install dependencies
-npm install  # or pip install -r requirements.txt, etc.
+## How to read this repository
 
-# Build the project
-npm run build  # or make build, etc.
-```
+All documents in this repository are organized by **communication type**.
 
-### Install from package manager
+The distinction helps people know when to care about a standard pattern and how to use it.
 
-```bash
-# Using npm
-npm install project-name
+The repository is structured into three folders:
 
-# Using pip
-pip install project-name
+- **Daily**
+- **Procedural**
+- **Long-Term**
 
-# Using other package managers
-# Add installation instructions here
-```
+Each folder represents a different mode of communication in open source projects.
 
-## Usage
+---
 
-### Basic Usage
+standard-blueprint/
+├── README.md
+├── .gitignore
+├── .gitattributes
+│
+├── Daily/
+│   ├── README.md
+│   ├── CONTRIBUTING.md
+│   ├── SUPPORT.md
+│   ├── CODE_REVIEW.md
+│   ├── MEETINGS.md
+│   └── communication-practices.md
+│
+├── Procedural/
+│   ├── README.md
+│   ├── SECURITY.md
+│   ├── ACCESSIBILITY.md
+│   ├── LOCALIZATION.md
+│   ├── FUNDING.md
+│   ├── CHANGELOG.md
+│   ├── ADOPTERS.md
+│   ├── contribution-taxonomy.md
+│   ├── decision-log.md
+│   ├── role-rotation.md
+│   ├── audit-checklist.md
+│   └── metrics/
+│       ├── README.md
+│       ├── chaoss-mapping.md
+│       ├── dashboard.md
+│       ├── data-sources.md
+│       └── review-notes.md
+│
+├── Long-Term/
+│   ├── README.md
+│   ├── GOVERNANCE.md
+│   ├── OWNERSHIP.md
+│   ├── MAINTAINERS.md
+│   ├── CODE_OF_CONDUCT.md
+│   ├── LICENSE.md
+│   ├── CREDIT.md
+│   └── restorative-process.md
+│
+└── .github/
+    ├── PULL_REQUEST_TEMPLATE.md
+    ├── FUNDING.yml
+    ├── github-label-sync.yml
+    ├── ISSUE_TEMPLATE/
+    │   ├── bug_report.md
+    │   ├── feature_request.md
+    │   └── governance_change.md
+    └── workflows/
+        ├── lint-docs.yml
+        └── policy-checks.yml
 
-```bash
-# Basic command example
-project-name --help
+---
 
-# Example with options
-project-name --input file.txt --output result.txt
-```
+## Daily Operations
 
-### Configuration
+The `Daily/` folder contains documents that support **orientation, coordination, and care** in ongoing work.
 
-Create a configuration file:
+These texts are consulted frequently.  
+They evolve quickly.  
+They lower the barrier to participation for newcomers and active contributors alike.
 
-```yaml
-# config.yaml
-setting1: value1
-setting2: value2
-```
+Daily Operations answers questions such as:
+- Where do I go?
+- Who do I ask?
+- What is expected of me?
+- How do we interact while work is happening?
 
-### Examples
+Examples include contribution guidance, support channels, review practices, meeting coordination, and shared communication norms.
 
-#### Example 1: Basic Example
+---
 
-```bash
-# Command example
-project-name example-command
-```
+## Procedural
 
-#### Example 2: Advanced Example
+The `Procedural/` folder contains documents that define **repeatable processes**, the procedures or how the project community do things.
 
-```bash
-# More complex command
-project-name advanced-command --option1 value1 --option2 value2
-```
+These texts are consulted when uncertainty arises.  
+They are designed to set up repeatable processes, so the same decisions don’t have to be made again and again. This reduces day-to-day effort by relying on pre-defined procedures. 
 
-## API Reference
+Procedural answers questions such as:
+- What is the process?
+- What happens if something goes wrong?
+- How are decisions make?
+- How are responsibilities rotated or transferred?
 
-### Functions
+Examples include security handling, accessibility practices, funding transparency, decision logs, and audit checklists.
 
-#### `functionName(param1, param2)`
+### Contribution taxonomy
 
-Description of what this function does.
+Within `Procedural/`, the **contribution taxonomy** defines how different kinds of work are classified.
 
-**Parameters:**
-- `param1` (string): Description of parameter 1
-- `param2` (number): Description of parameter 2
+It supports:
+- consistent labeling of issues and pull requests,
+- visibility of non-code labor,
+- fairer routing and review,
+- later summaries and recognition.
 
-**Returns:**
-- (boolean): Description of return value
+### Metrics and signals
 
-**Example:**
-```javascript
-const result = functionName("example", 42);
-```
+The `Procedural/metrics/` folder contains **community health and sustainability signals**, informed by CHAOSS and related research.
 
-## Contributing
+Metrics are used to:
+- surface patterns and risks,
+- reflect on participation, workload, and sustainability,
+- support governance discussions.
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+---
 
-### Development Setup
+## Long-Term 
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+The `Long-Term/` folder contains documents that define **legitimacy, responsibility, and repair across time**.
 
-## License
+These texts are rarely read — but when they are, the project’s credibility depends on them.  
+They change slowly and require explicit consent to modify.  
+They carry institutional memory beyond individual contributors.
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+Long-term answers questions such as:
+- Who decides?
+- Who is accountable?
+- How is harm addressed?
+- How is equity being addressed?
+- What obligations persist beyond individuals?
 
-## Support
+Examples include governance, ownership, maintainer responsibility, codes of conduct, licensing, credit, and restorative processes.
 
-- 📖 [Documentation](https://github.com/username/project-name/wiki)
-- 🐛 [Report a Bug](https://github.com/username/project-name/issues)
-- 💡 [Request a Feature](https://github.com/username/project-name/issues)
-- 💬 [Discussions](https://github.com/username/project-name/discussions)
+---
 
-## Acknowledgments
+## GitHub-specific configuration
 
-- [Inspiration/Reference 1](link-to-reference)
-- [Inspiration/Reference 2](link-to-reference)
-- Contributors who have helped with this project
+The `.github/` folder contains **platform-specific configuration** that supports the blueprint.
 
-## Changelog
+This includes:
+- issue and pull request templates,
+- automation and checks,
+- documentation linting or policy presence checks,
+- label sync according to taxonomy.
 
-See [CHANGELOG.md](CHANGELOG.md) for a list of changes and version history.
+These files help automate the procedures.
+
+---
+
+## Further reading
+
+For the full theoretical grounding, case studies, and analysis behind this structure, see:
+
+[**Diversifying Open Source**  
+*An Open Standards Playbook for Inclusive and Equitable Tech Projects*](https://link.springer.com/book/10.1007/979-8-8688-0769-5)
+By Paloma Oliveira 
+Apress / Springer Nature, 2025  
+DOI: https://doi.org/10.1007/979-8-8688-0769-5
