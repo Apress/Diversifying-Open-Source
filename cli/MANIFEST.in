@@ -1,0 +1,5 @@
+include README.md
+include requirements.txt
+recursive-include diversity_standard *.yml
+recursive-include diversity_standard/templates *.md
+
