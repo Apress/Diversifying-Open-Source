@@ -55,13 +55,15 @@ how to use it.
 
 The repository is structured into three folders:
 
-- **Daily**
-- **Procedural**
-- **Long-Term**
+- [**Daily**](Daily/README.md)
+- [**Procedural**](Procedural/README.md)
+- [**Long-Term**](Long-Term/README.md)
 
 Each folder represents a different mode of communication in open source projects.
 
 ---
+
+## Folders architecture
 
 ```
 standard-blueprint/
@@ -123,91 +125,17 @@ standard-blueprint/
 
 ---
 
-## Daily Operations
+## CLI Tool
 
-The `Daily/` folder contains documents that support **orientation, coordination, and care** in ongoing work.
+This repository includes a **command-line interface (CLI)** tool to help projects adopt and personalize the blueprint documents.
 
-These texts are consulted frequently.  
-They evolve quickly.  
-They lower the barrier to participation for newcomers and active contributors alike.
+The CLI can:
 
-Daily Operations answers questions such as:
+- inspect existing projects to identify missing documents,
+- generate personalized documents from templates using an interactive questionnaire,
 
-- Where do I go?
-- Who do I ask?
-- What is expected of me?
-- How do we interact while work is happening?
-
-Examples include contribution guidance, support channels, review practices,
-meeting coordination, and shared communication norms.
-
----
-
-## Procedural
-
-The `Procedural/` folder contains documents that define **repeatable
-processes**, the procedures or how the project community do things.
-
-These texts are consulted when uncertainty arises.
-They are designed to set up repeatable processes, so the same decisions
-don't have to be made again and again. This reduces day-to-day effort by
-relying on pre-defined procedures. 
-
-Procedural answers questions such as:
-
-- What is the process?
-- What happens if something goes wrong?
-- How are decisions make?
-- How are responsibilities rotated or transferred?
-
-Examples include security handling, accessibility practices, funding
-transparency, decision logs, and audit checklists.
-
-### Contribution taxonomy
-
-Within `Procedural/`, the **contribution taxonomy** defines how different
-kinds of work are classified.
-
-It supports:
-
-- consistent labeling of issues and pull requests,
-- visibility of non-code labor,
-- fairer routing and review,
-- later summaries and recognition.
-
-### Metrics and signals
-
-The `Procedural/metrics/` folder contains **community health and
-sustainability signals**, informed by CHAOSS and related research.
-
-Metrics are used to:
-
-- surface patterns and risks,
-- reflect on participation, workload, and sustainability,
-- support governance discussions.
-
----
-
-## Long-Term 
-
-The `Long-Term/` folder contains documents that define **legitimacy,
-responsibility, and repair across time**.
-
-These texts are rarely read — but when they are, the project's credibility
-depends on them.
-They change slowly and require explicit consent to modify.
-They carry institutional memory beyond individual contributors.
-
-Long-term answers questions such as:
-
-- Who decides?
-- Who is accountable?
-- How is harm addressed?
-- How is equity being addressed?
-- What obligations persist beyond individuals?
-
-Examples include governance, ownership, maintainer responsibility, codes of
-conduct, licensing, credit, and restorative processes.
+For installation, usage, and detailed documentation, see:
+[**CLI Documentation**](cli/README.md)
 
 ---
 
