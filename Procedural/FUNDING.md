@@ -1,5 +1,6 @@
 # Funding and Financial Transparency
 
+{% if has_funding %}
 This document defines how funding is disclosed and handled.
 
 Its purpose is to make financial influence visible and reviewable.
@@ -8,12 +9,16 @@ Its purpose is to make financial influence visible and reviewable.
 
 ## Funding sources
 
+{% if funding_sources %}
+{{ funding_sources }}
+{% else %}
 List current sources:
 
 - Grants: [...]
 - Sponsorships: [...]
 - Donations: [...]
 - In-kind support: [...]
+{% endif %}
 
 ---
 
@@ -46,3 +51,8 @@ Significant allocations are documented.
 ## Updates
 
 This document is updated when funding sources or policies change.
+{% else %}
+This project does not currently receive external funding.
+
+All work is contributed voluntarily by community members.
+{% endif %}

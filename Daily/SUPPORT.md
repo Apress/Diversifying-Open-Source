@@ -8,12 +8,23 @@ This document explains **where to ask what**, so questions do not get lost or mi
 
 ## Where to get help
 
+{% if support_channels %}
+You can get help through:
+{% for channel in support_channels %}
+- {{ channel }}{% if channel == "Email" and support_email %} ({{ support_email }}){% endif %}
+{% endfor %}
+{% else %}
 - Questions and discussions: [link]
 - Bug reports: Issues
 - Feature ideas: Issues
-- Security concerns: see [Procedural/SECURITY.md](Procedural/SECURITY.md)
+{% endif %}
+- Security concerns: see [Procedural/SECURITY.md](Procedural/SECURITY.md){% if security_email %} or contact {{ security_email }}{% endif %}
 
+{% if support_channels %}
 If you are unsure where your question belongs, start with the discussion channel.
+{% else %}
+If you are unsure where your question belongs, start with the discussion channel.
+{% endif %}
 
 ---
 
@@ -34,7 +45,7 @@ Incomplete questions are still welcome.
 
 This is a best-effort, volunteer-driven project.
 
-- Typical response time: [e.g. a few days]
+- Typical response time: {% if support_response_time %}{{ support_response_time }}{% else %}a few days{% endif %}
 - No response does not mean your question is unwelcome
 - You are encouraged to follow up politely
 

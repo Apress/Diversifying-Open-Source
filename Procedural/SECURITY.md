@@ -11,7 +11,7 @@ requiring ad-hoc decisions in moments of urgency.
 
 Please report security issues privately.
 
-- Contact email: [security@example.org]
+- Contact email: {% if security_email %}{{ security_email }}{% elif security_reporting_method %}{{ security_reporting_method }}{% else %}[security@example.org]{% endif %}
 - Backup contact: [name / role]
 - PGP key (optional): [link]
 
@@ -30,9 +30,13 @@ Do not open a public issue for security vulnerabilities.
 
 ## Disclosure policy
 
-- Default disclosure window: [e.g. 30–90 days after fix]
+{% if security_disclosure_policy %}
+{{ security_disclosure_policy }}
+{% else %}
+- Default disclosure window: 30–90 days after fix
 - Disclosure timing may vary based on risk
 - A public advisory will be published when appropriate
+{% endif %}
 
 ---
 

@@ -1,8 +1,12 @@
-# Contributing
+# Contributing to {{ project_name }}
 
+{% if emphasize_non_code %}
 Contribution in this project includes code and non-code work.
 Documentation, review, accessibility, translation, moderation, triage,
 and community care are all recognized forms of contribution.
+{% else %}
+This project welcomes contributions of all kinds.
+{% endif %}
 
 This document explains how to participate.
 
@@ -12,6 +16,9 @@ This document explains how to participate.
 
 You can contribute by:
 
+{% if contribution_types %}
+{{ contribution_types }}
+{% else %}
 - writing or reviewing code
 - improving documentation or examples
 - reviewing accessibility or usability
@@ -19,6 +26,7 @@ You can contribute by:
 - helping with issue triage
 - supporting other contributors
 - facilitating meetings or taking notes
+{% endif %}
 
 If you are unsure where your contribution fits, open an issue and describe
 what you want to do.
@@ -69,4 +77,4 @@ You can request:
 Participation implies agreement with the project's
 [Code of Conduct](Long-Term/CODE_OF_CONDUCT.md).
 If something feels unclear or uncomfortable, you can reach out via the support
-channels.
+channels{% if support_email %} ({{ support_email }}){% endif %}.

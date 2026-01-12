@@ -19,7 +19,11 @@ Examples:
 
 ## Rotation schedule
 
+{% if role_rotation_frequency %}
+- Default cadence: {{ role_rotation_frequency }}
+{% else %}
 - Default cadence: [e.g. monthly]
+{% endif %}
 - How transitions are announced
 - Temporary assignments when needed
 

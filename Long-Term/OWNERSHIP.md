@@ -10,6 +10,9 @@ It defines accountability and stewardship.
 
 ## Areas of ownership
 
+{% if ownership_structure %}
+{{ ownership_structure }}
+{% else %}
 List ownership areas and roles:
 
 - Core technical direction: [...]
@@ -19,6 +22,7 @@ List ownership areas and roles:
 - Localization: [...]
 - Community moderation: [...]
 - Funding and finances: [...]
+{% endif %}
 
 ---
 

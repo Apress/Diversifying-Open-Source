@@ -1,6 +1,6 @@
 # Adopters
 
-This document records known use of the project.
+{% if project_name %}This document records known use of {{ project_name }}.{% else %}This document records known use of the project.{% endif %}
 
 Its purpose is to connect our work to real-world impact.
 

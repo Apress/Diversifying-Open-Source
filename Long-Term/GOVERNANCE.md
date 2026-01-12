@@ -62,16 +62,41 @@ It establishes:
 
 ## Governance model
 
+{% if governance_model == "consensus-seeking" %}
+This project uses a consensus-seeking governance model where decisions
+are made through discussion and agreement among participants.
+
+{% elif governance_model == "council-based" %}
+This project is governed by a council of maintainers who make decisions
+through discussion and voting.
+
+{% elif governance_model == "voting-based" %}
+This project uses a voting-based governance model where decisions are
+made through formal voting processes.
+
+{% elif governance_model == "benevolent-dictator" %}
+This project uses a benevolent dictator governance model where final
+decisions rest with project leadership, informed by community input.
+
+{% elif governance_model == "custom" %}
+{% if governance_custom %}
+{{ governance_custom }}
+{% else %}
+This project uses a custom governance model.
+{% endif %}
+
+{% else %}
 Describe the governance model used by the project:
 
 - consensus-seeking
 - council-based
 - voting-based
 - hybrid
+{% endif %}
 
 The chosen model must be documented along with:
 
-- who participates
+- who participates{% if governance_participants %}: {{ governance_participants }}{% endif %}
 - how decisions are reached
 - how disagreement is handled
 - how outcomes are recorded

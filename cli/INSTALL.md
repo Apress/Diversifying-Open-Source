@@ -46,8 +46,8 @@ pytest tests/
 # Inspect a project
 diversity-standard inspect /path/to/project
 
-# Generate missing documents
-diversity-standard generate /path/to/project --interactive
+# Generate missing documents (interactive questionnaire)
+diversity-standard generate /path/to/project
 
 # Initialize configuration
 diversity-standard init /path/to/project

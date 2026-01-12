@@ -70,12 +70,13 @@ class DocumentGenerator:
         # Prepare template context
         context = self._build_context(config, blueprint_name, category)
 
-        # Render template
+        # Render template with Jinja2 (supports conditionals)
         try:
             template = self.env.from_string(template_content)
             rendered = template.render(**context)
-        except Exception:
+        except Exception as e:
             # Fallback: simple placeholder replacement
+            # Log error for debugging (can be enhanced with proper logging later)
             rendered = self._simple_replace(template_content, context)
 
         # Write output
@@ -141,6 +142,9 @@ class DocumentGenerator:
         Returns:
             Dictionary of template variables
         """
+        # Get answers from questionnaire if available
+        answers = config.get("answers", {})
+
         context = {
             "project_name": config.get("project.name", "Project Name"),
             "project_description": config.get("project.description", ""),
@@ -154,6 +158,16 @@ class DocumentGenerator:
             "funding_sources": config.get("funding.sources", []),
         }
 
+        # Add questionnaire answers to context (for conditional rendering)
+        if answers:
+            context.update(answers)
+            # Convert yes/no answers to boolean for Jinja2
+            for key, value in answers.items():
+                if isinstance(value, bool):
+                    context[key] = value
+                elif isinstance(value, str) and value.lower() in ["true", "false", "yes", "no"]:
+                    context[key] = value.lower() in ["true", "yes"]
+
         # Add maintainer info as formatted strings
         if context["maintainers"]:
             maintainer_names = [m.get("name", "") for m in context["maintainers"] if m.get("name")]
@@ -162,6 +176,40 @@ class DocumentGenerator:
         else:
             context["maintainer_names"] = ""
             context["maintainer_list"] = []
+
+        # Add common conditional flags (convert to boolean if needed)
+        context["has_funding"] = bool(answers.get("has_funding", False))
+        context["has_meetings"] = bool(answers.get("has_meetings", False))
+        context["has_accessibility_commitment"] = bool(answers.get("has_accessibility_commitment", True))
+        context["supports_multiple_languages"] = bool(answers.get("supports_multiple_languages", False))
+        context["emphasize_non_code"] = bool(answers.get("emphasize_non_code", True))
+        context["tracks_adopters"] = bool(answers.get("tracks_adopters", False))
+        context["maintains_decision_log"] = bool(answers.get("maintains_decision_log", True))
+        context["has_role_rotation"] = bool(answers.get("has_role_rotation", True))
+        context["conducts_audits"] = bool(answers.get("conducts_audits", True))
+
+        # Ensure all new question answers are in context with defaults
+        new_question_defaults = {
+            "communication_style": "",
+            "communication_channels": [],
+            "adopter_submission_process": "",
+            "decision_log_process": "",
+            "role_rotation_frequency": "monthly",
+            "audit_frequency": "annually",
+            "audit_reviewers": "",
+            "credit_approach": "",
+        }
+        
+        for key, default_value in new_question_defaults.items():
+            if key not in context:
+                context[key] = answers.get(key, default_value)
+
+        # Ensure funding_sources is a string if it's a list
+        if isinstance(context.get("funding_sources"), list):
+            if context["funding_sources"]:
+                context["funding_sources"] = "\n".join(f"- {source}" for source in context["funding_sources"])
+            else:
+                context["funding_sources"] = ""
 
         return context
 
@@ -220,7 +268,14 @@ class DocumentGenerator:
         with open(mapping_file) as f:
             mapping = yaml.safe_load(f)
 
+        # Get answers to check for conditional skipping
+        answers = config.get("answers", {})
+
         for blueprint_name in inspection_result.missing_documents:
+            # Check if document should be skipped based on answers
+            if self._should_skip_document(blueprint_name, answers):
+                continue
+
             doc_config = mapping.get("documents", {}).get(blueprint_name, {})
             category = doc_config.get("category", "Unknown")
 
@@ -242,4 +297,24 @@ class DocumentGenerator:
                 generated.append(output_path)  # Include in dry-run list
 
         return generated
+
+    def _should_skip_document(self, doc_name: str, answers: Dict) -> bool:
+        """Check if document should be skipped based on questionnaire answers.
+
+        Args:
+            doc_name: Document name
+            answers: Questionnaire answers
+
+        Returns:
+            True if document should be skipped
+        """
+        # Check for explicit skip conditions
+        skip_conditions = {
+            "FUNDING.md": not bool(answers.get("has_funding", False)),
+            "MEETINGS.md": not bool(answers.get("has_meetings", False)),
+            "LOCALIZATION.md": not bool(answers.get("supports_multiple_languages", False)),
+            "ADOPTERS.md": not bool(answers.get("tracks_adopters", False)),
+        }
+
+        return skip_conditions.get(doc_name, False)
 

@@ -1,8 +1,14 @@
 # Restorative Process
 
+{% if code_of_conduct_enforcement == "Restorative process (preferred)" or code_of_conduct_enforcement == "Hybrid approach" %}
 This document defines how the project responds to harm when repair is possible.
 
 It complements the Code of Conduct with operational detail.
+{% else %}
+This project uses {{ code_of_conduct_enforcement }} for addressing Code of Conduct violations.
+
+Restorative processes may be available in specific circumstances.
+{% endif %}
 
 ---
 

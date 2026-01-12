@@ -4,10 +4,6 @@ A command-line tool for inspecting and generating diversity and inclusion docume
 
 ## Installation
 
-### Prerequisites
-
-It's recommended to use a virtual environment to isolate dependencies:
-
 **Create a virtual environment:**
 
 ```bash
@@ -48,6 +44,15 @@ pip install -e ".[dev]"
 
 ## Usage
 
+### Command Structure
+
+All commands follow this pattern:
+```bash
+diversity-standard <command> [path] [options]
+```
+
+**Important**: Options like `--dry-run` are specific to each command, not global options.
+
 ### Inspect a Project
 
 Check what diversity documentation already exists in your project:
@@ -59,37 +64,109 @@ diversity-standard inspect [path]
 Example:
 ```bash
 diversity-standard inspect /path/to/my-project
+# or
+diversity-standard inspect .
 ```
 
 ### Generate Missing Documents
 
-Generate missing documentation from templates:
+Generate missing documentation from templates with an interactive questionnaire:
 
 ```bash
 diversity-standard generate [path] [options]
 ```
 
-Options:
+**Note**: `[path]` is optional and defaults to the current directory (`.`) if not specified.
+
+The `generate` command is **always interactive** and will guide you through:
+1. Core project information (name, description, license, etc.)
+2. Document selection (choose which documents to generate)
+3. Category-specific questions (Daily, Procedural, Long-Term)
+4. Document-specific questions (customize individual documents)
+
+**Available options for `generate` command:**
 - `--dry-run` - Show what would be generated without creating files
 - `--backup` - Backup existing files before overwriting
 - `--force` - Overwrite existing files
-- `--interactive` - Use interactive mode for missing configuration values
 - `--config FILE` - Specify configuration file path
 
-Example:
+**Examples:**
 ```bash
-diversity-standard generate . --interactive
+# Dry run (preview without generating)
+# [path] can be omitted (defaults to current directory)
+diversity-standard generate --dry-run
+# Or specify [path] explicitly
+diversity-standard generate [path] --dry-run
+diversity-standard generate . --dry-run
+diversity-standard generate /path/to/project --dry-run
+
+# Generate with full questionnaire (default behavior)
+diversity-standard generate [path]
+diversity-standard generate .
+
+# Generate with backup
+diversity-standard generate [path] --backup
+diversity-standard generate . --backup
 ```
+
+**Interactive Questionnaire:**
+The questionnaire guides you through personalizing your documentation:
+
+- **Core questions**: Project name, description, repository, license, maintainers, contact info
+- **Daily questions**: Contribution types, support channels, meeting preferences, code review philosophy
+- **Procedural questions**: Security policies, accessibility commitments, localization, funding, versioning
+- **Long-term questions**: Governance model, code of conduct enforcement, ownership structure
+
+Questions support conditional logic:
+- **Yes/No questions**: If you answer "no" to "Do you have funding?", FUNDING.md will be skipped
+- **Multiple choice**: Select governance model, and documents adapt accordingly
+- **Freeform text**: Provide custom text for key sections
+
+All answers are saved to `.diversity-standard.yml` for future use.
 
 ### Initialize Configuration
 
 Create a configuration file with interactive prompts:
 
 ```bash
-diversity-standard init [path]
+diversity-standard init [path] [options]
 ```
 
+**Available options for `init` command:**
+- `--full` - Run full questionnaire (not just basic config)
+- `--config FILE` - Specify config file path
+
+**Basic mode** (default):
+Asks for core project information only.
+
+**Full mode** (`--full`):
+Runs the complete questionnaire to gather all information needed for personalized documents.
+
 This creates a `.diversity-standard.yml` file in your project root with project-specific information.
+
+**Examples:**
+```bash
+# Basic config
+diversity-standard init .
+
+# Full questionnaire
+diversity-standard init . --full
+```
+
+### Run Questionnaire Only
+
+Run the interactive questionnaire without generating documents:
+
+```bash
+diversity-standard questionnaire [path]
+```
+
+This is useful if you want to answer questions and save the configuration, then generate documents later.
+
+**Example:**
+```bash
+diversity-standard questionnaire .
+```
 
 ### Quick Check
 
@@ -100,6 +177,24 @@ diversity-standard check [path]
 ```
 
 Exit code 0 if compliant, 1 if documents are missing.
+
+**Example:**
+```bash
+diversity-standard check .
+```
+
+## Getting Help
+
+To see all available commands:
+```bash
+diversity-standard --help
+```
+
+To see options for a specific command:
+```bash
+diversity-standard generate --help
+diversity-standard init --help
+```
 
 ## Configuration
 
@@ -144,10 +239,29 @@ funding:
    - **Procedural**: Process documents (SECURITY.md, ACCESSIBILITY.md, etc.)
    - **Long-Term**: Governance documents (GOVERNANCE.md, CODE_OF_CONDUCT.md, etc.)
 
-3. **Generation**: Missing documents are generated from templates with:
+3. **Questionnaire** (interactive mode):
+   - Guides you through personalizing documents
+   - Asks conditional questions (e.g., "Do you have funding?" → skips FUNDING.md if no)
+   - Allows custom text input for key sections
+   - Lets you choose which documents to generate
+
+4. **Generation**: Missing documents are generated from templates with:
    - Project-specific information filled in
+   - Conditional sections based on your answers
+   - Custom text you provided
    - Placeholders replaced with values from config
    - Files created in appropriate locations
+
+## Conditional Logic
+
+The questionnaire uses conditional logic to personalize documents:
+
+- **If you answer "No" to funding**: FUNDING.md is automatically skipped
+- **If you answer "No" to meetings**: MEETINGS.md is automatically skipped
+- **If you select "custom" governance**: You're asked to describe your custom model
+- **If you emphasize non-code contributions**: CONTRIBUTING.md highlights this
+
+All answers are saved in `.diversity-standard.yml` for future use.
 
 ## Document Discovery
 

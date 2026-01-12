@@ -24,12 +24,18 @@ Not all localization work involves translating text.
 
 ## Supported contexts
 
+{% if supports_multiple_languages %}
 This project documents which contexts it actively supports.
 
-- Primary context(s): [e.g. language, region, institutional setting]
+- Primary context(s): {% if supported_languages %}{{ supported_languages }}{% else %}[e.g. language, region, institutional setting]{% endif %}
 - Additional contexts: [list]
 
 Unsupported contexts may still use the project, but without guarantees.
+{% else %}
+This project currently supports English only. Localization work may be added in the future.
+
+Unsupported contexts may still use the project, but without guarantees.
+{% endif %}
 
 ---
 

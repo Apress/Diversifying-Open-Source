@@ -20,9 +20,13 @@ Each entry should include:
 
 ## Versioning scheme
 
+{% if versioning_scheme %}
+This project uses {{ versioning_scheme }}.
+{% else %}
 Describe versioning approach:
 - semantic versioning, or
 - alternative scheme
+{% endif %}
 
 ---
 

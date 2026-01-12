@@ -1,6 +1,6 @@
 # Communication Practices
 
-This document describes how we try to communicate while work is happening.
+{% if project_name %}This document describes how we try to communicate in {{ project_name }} while work is happening.{% else %}This document describes how we try to communicate while work is happening.{% endif %}
 
 These are shared practices, not rigid rules.
 

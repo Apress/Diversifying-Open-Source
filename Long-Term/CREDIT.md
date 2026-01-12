@@ -1,6 +1,6 @@
 # Credit
 
-This document records how labor is recognized over time.
+{% if project_name %}This document records how labor is recognized over time in {{ project_name }}.{% else %}This document records how labor is recognized over time.{% endif %}
 
 Credit here functions as **institutional memory**.
 It exists to prevent work from becoming invisible after the fact.

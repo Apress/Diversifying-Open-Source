@@ -3,6 +3,22 @@
 This directory contains long-term governance and legal documents for the
 project that carry **responsibility, legitimacy, and memory across time**.
 
+These texts are rarely read — but when they are, the project's credibility
+depends on them.
+They change slowly and require explicit consent to modify.
+They carry institutional memory beyond individual contributors.
+
+Long-term answers questions such as:
+
+- Who decides?
+- Who is accountable?
+- How is harm addressed?
+- How is equity being addressed?
+- What obligations persist beyond individuals?
+
+Examples include governance, ownership, maintainer responsibility, codes of
+conduct, licensing, credit, and restorative processes.
+
 ## Contents
 
 - **[GOVERNANCE.md](GOVERNANCE.md)** - Project governance model

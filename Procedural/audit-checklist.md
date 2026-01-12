@@ -26,7 +26,11 @@ This checklist supports periodic review of project practices.
 
 ## Review notes
 
+{% if audit_frequency %}
+This checklist is reviewed {{ audit_frequency }}.
+{% endif %}
+
 Date:
-Reviewer(s):
+Reviewer(s):{% if audit_reviewers %} {{ audit_reviewers }}{% endif %}
 Findings:
 Follow-up actions:

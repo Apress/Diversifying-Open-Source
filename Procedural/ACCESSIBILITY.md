@@ -1,10 +1,22 @@
 # Accessibility
 
+{% if has_accessibility_commitment %}
 Accessibility defines how this project reduces barriers to participation and use
 across different abilities, contexts, and modes of interaction.
 
 It is treated as a **procedural commitment**, not as a final polish step or a static checklist.
 This document exists to avoid ad-hoc accessibility decisions and to make trade-offs explicit.
+
+{% if accessibility_approach %}
+## Our Commitment
+
+{{ accessibility_approach }}
+
+---
+{% endif %}
+{% else %}
+Accessibility considerations are documented as they arise.
+{% endif %}
 
 ---
 

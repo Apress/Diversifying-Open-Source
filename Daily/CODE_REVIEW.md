@@ -1,8 +1,12 @@
 # Code Review
 
+{% if code_review_philosophy %}
+{{ code_review_philosophy }}
+{% else %}
 Code review is treated as a **collaborative practice**, not as a quality gate.
 
 The goal is shared understanding and long-term maintainability.
+{% endif %}
 
 ---
 

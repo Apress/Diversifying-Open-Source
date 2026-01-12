@@ -1,6 +1,6 @@
 # Decision Log
 
-This document records decisions so context is not lost over time.
+{% if project_name %}This document records decisions for {{ project_name }} so context is not lost over time.{% else %}This document records decisions so context is not lost over time.{% endif %}
 
 ---
 
