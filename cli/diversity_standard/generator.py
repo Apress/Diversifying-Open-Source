@@ -19,7 +19,7 @@ class DocumentGenerator:
         Args:
             blueprint_root: Root directory of blueprint repository
             template_dir: Directory containing templates. If None, uses
-                         blueprint_root as template source
+                         blueprint_root/templates as template source
         """
         if blueprint_root is None:
             blueprint_root = Path(__file__).parent.parent.parent
@@ -27,8 +27,8 @@ class DocumentGenerator:
         self.blueprint_root = blueprint_root
 
         if template_dir is None:
-            # Try to find templates in blueprint structure
-            template_dir = blueprint_root
+            # Try to find templates in templates/ directory
+            template_dir = blueprint_root / "templates"
         self.template_dir = template_dir
 
         # Setup Jinja2 environment
@@ -97,7 +97,7 @@ class DocumentGenerator:
         Returns:
             Path to template file or None
         """
-        # Try category-specific directory first
+        # Try category-specific directory in templates/
         category_dirs = {
             "Daily": ["Daily", "daily"],
             "Procedural": ["Procedural", "procedural"],
@@ -105,27 +105,22 @@ class DocumentGenerator:
         }
 
         for dir_name in category_dirs.get(category, []):
-            template_path = self.blueprint_root / dir_name / blueprint_name
+            template_path = self.template_dir / dir_name / blueprint_name
             if template_path.exists() and template_path.is_file():
                 return template_path
 
-        # Try templates directory (for copied templates)
-        template_path = Path(__file__).parent / "templates" / blueprint_name
-        if template_path.exists() and template_path.is_file():
-            return template_path
-
-        # Try root directory
-        template_path = self.blueprint_root / blueprint_name
+        # Try templates directory root (for flat structure)
+        template_path = self.template_dir / blueprint_name
         if template_path.exists() and template_path.is_file():
             return template_path
 
         # Try in subdirectories of templates
-        templates_dir = Path(__file__).parent / "templates"
-        for subdir in templates_dir.iterdir():
-            if subdir.is_dir():
-                template_path = subdir / blueprint_name
-                if template_path.exists() and template_path.is_file():
-                    return template_path
+        if self.template_dir.exists():
+            for subdir in self.template_dir.iterdir():
+                if subdir.is_dir():
+                    template_path = subdir / blueprint_name
+                    if template_path.exists() and template_path.is_file():
+                        return template_path
 
         return None
 
@@ -236,8 +231,8 @@ class DocumentGenerator:
         inspection_result: InspectionResult,
         config: ProjectConfig,
         output_preferences: Optional[Dict[str, Path]] = None,
-        dry_run: bool = False,
         backup: bool = False,
+        force: bool = False,
     ) -> List[Path]:
         """Generate all missing documents.
 
@@ -245,8 +240,8 @@ class DocumentGenerator:
             inspection_result: Results from project inspection
             config: Project configuration
             output_preferences: Preferred output locations by category
-            dry_run: If True, don't actually create files
             backup: If True, backup existing files before overwriting
+            force: If True, overwrite existing files without backup
 
         Returns:
             List of generated file paths
@@ -258,7 +253,7 @@ class DocumentGenerator:
 
             inspector = ProjectInspector(self.blueprint_root)
             output_preferences = inspector.get_document_location_preference(
-                inspection_result.project_root
+                inspection_result.project_root, config
             )
 
         # Load document mapping to get categories
@@ -283,18 +278,20 @@ class DocumentGenerator:
             base_path = output_preferences.get(category, inspection_result.project_root)
             output_path = base_path / blueprint_name
 
-            # Check if file already exists
-            if output_path.exists() and backup:
-                backup_path = output_path.with_suffix(output_path.suffix + ".backup")
-                if not dry_run:
+            # Handle existing files
+            if output_path.exists():
+                if not force:
+                    # Skip existing files if not forcing
+                    continue
+                elif backup:
+                    # Create backup before overwriting
+                    backup_path = output_path.with_suffix(output_path.suffix + ".backup")
                     shutil.copy2(output_path, backup_path)
 
-            if not dry_run:
-                success = self.generate_document(blueprint_name, output_path, config, category)
-                if success:
-                    generated.append(output_path)
-            else:
-                generated.append(output_path)  # Include in dry-run list
+            # Generate document
+            success = self.generate_document(blueprint_name, output_path, config, category)
+            if success:
+                generated.append(output_path)
 
         return generated
 

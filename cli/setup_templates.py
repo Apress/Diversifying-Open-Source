@@ -15,11 +15,11 @@ def setup_templates():
     # Create templates directory structure
     templates_dir.mkdir(parents=True, exist_ok=True)
 
-    # Directories to copy from
+    # Directories to copy from (now in templates/)
     source_dirs = {
-        "Daily": repo_root / "Daily",
-        "Procedural": repo_root / "Procedural",
-        "Long-Term": repo_root / "Long-Term",
+        "Daily": repo_root / "templates" / "Daily",
+        "Procedural": repo_root / "templates" / "Procedural",
+        "Long-Term": repo_root / "templates" / "Long-Term",
     }
 
     copied = 0

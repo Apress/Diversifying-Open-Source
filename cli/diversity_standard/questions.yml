@@ -66,6 +66,26 @@ questions:
     default_from: "support_email"
     affects: ["SECURITY.md"]
   
+  - id: "document_location"
+    type: "multiple_choice"
+    text: "Where should documents be placed?"
+    category: "core"
+    options:
+      - "Blueprint structure (Daily/, Procedural/, Long-Term/)"
+      - "docs/ subdirectories (docs/daily/, docs/procedural/, docs/long-term/)"
+      - "Project root (all files in root directory)"
+      - "Custom path (specify below)"
+    default: 0
+    affects: ["all"]
+  
+  - id: "document_location_custom"
+    type: "text"
+    text: "Custom base path for documents (relative to project root, e.g., 'documentation' or 'docs/policies')"
+    category: "core"
+    depends_on: "document_location"
+    show_if: "Custom path (specify below)"
+    affects: ["all"]
+  
   # Daily Operations Questions
   - id: "emphasize_non_code"
     type: "yes_no"

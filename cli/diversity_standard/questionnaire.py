@@ -225,12 +225,13 @@ class Questionnaire:
             return Confirm.ask(question.text, default=default if default is not None else False)
 
         elif question.type == "multiple_choice":
+            # Display numbered options for better readability
+            console.print(f"[yellow]{question.text}[/yellow]")
+            for i, option in enumerate(question.options, 1):
+                console.print(f"  {i}. {option}")
+            
             if question.multiple:
-                # Multi-select (simplified - would need checkbox UI)
-                console.print(f"[yellow]{question.text}[/yellow]")
-                for i, option in enumerate(question.options, 1):
-                    console.print(f"  {i}. {option}")
-                
+                # Multi-select
                 while True:
                     selected = Prompt.ask(
                         "Enter numbers (comma-separated, e.g., 1,3,5) or press Enter to skip",
@@ -250,12 +251,36 @@ class Questionnaire:
                     except ValueError:
                         console.print("[red]Invalid input. Please enter numbers separated by commas (e.g., 1,2,3)[/red]")
             else:
-                return Prompt.ask(
-                    question.text,
-                    choices=question.options,
-                    default=default or question.options[0] if question.options else None,
-                    show_choices=True,
-                )
+                # Single-select: allow number or option text
+                default_idx = default if isinstance(default, int) else (default if default is None else None)
+                if default_idx is None and question.options:
+                    default_idx = 0
+                
+                while True:
+                    prompt_text = f"Enter number (1-{len(question.options)})"
+                    if default_idx is not None:
+                        prompt_text += f" [default: {default_idx + 1}]"
+                    prompt_text += ": "
+                    
+                    answer = Prompt.ask(prompt_text, default=str(default_idx + 1) if default_idx is not None else "")
+                    
+                    # Try to parse as number first
+                    try:
+                        num = int(answer.strip())
+                        if 1 <= num <= len(question.options):
+                            return question.options[num - 1]
+                        else:
+                            console.print(f"[red]Please enter a number between 1 and {len(question.options)}[/red]")
+                    except ValueError:
+                        # Try to match by option text (case-insensitive, partial match)
+                        answer_lower = answer.strip().lower()
+                        matches = [opt for opt in question.options if answer_lower in opt.lower()]
+                        if len(matches) == 1:
+                            return matches[0]
+                        elif len(matches) > 1:
+                            console.print(f"[red]Ambiguous: '{answer}' matches multiple options. Please enter a number.[/red]")
+                        else:
+                            console.print(f"[red]Invalid input. Please enter a number (1-{len(question.options)}) or part of an option name.[/red]")
 
         elif question.type == "text":
             return Prompt.ask(
@@ -411,6 +436,10 @@ class Questionnaire:
             config.set("contact.support_email", self.answers["support_email"])
         if "security_email" in self.answers:
             config.set("contact.security_email", self.answers["security_email"])
+        if "document_location" in self.answers:
+            config.set("output.location", self.answers["document_location"])
+        if "document_location_custom" in self.answers:
+            config.set("output.location_custom", self.answers["document_location_custom"])
         if "governance_model" in self.answers:
             config.set("governance.model", self.answers["governance_model"])
         if "governance_custom" in self.answers:

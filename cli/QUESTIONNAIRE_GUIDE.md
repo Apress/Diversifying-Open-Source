@@ -134,21 +134,13 @@ Your custom text is preserved exactly as you write it - no template processing.
 
 ## Usage
 
-### Generate Documents (Always Interactive)
+### Initialize Project (Always Interactive)
 
 ```bash
-diversity-standard generate .
+diversity-standard init .
 ```
 
 This runs the complete questionnaire and generates documents.
-
-### Questionnaire Only
-
-```bash
-diversity-standard questionnaire .
-```
-
-Run the questionnaire, save answers, generate documents later.
 
 ## Saving and Reusing Answers
 

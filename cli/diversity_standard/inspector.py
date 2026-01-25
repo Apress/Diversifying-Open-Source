@@ -3,7 +3,7 @@
 import yaml
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 from diversity_standard.utils import (
     contains_keywords,
@@ -144,17 +144,47 @@ class ProjectInspector:
 
         return matches
 
-    def get_document_location_preference(self, project_root: Path) -> Dict[str, Path]:
-        """Determine preferred document locations based on existing structure.
+    def get_document_location_preference(self, project_root: Path, config: Optional[Any] = None) -> Dict[str, Path]:
+        """Determine preferred document locations based on config or existing structure.
 
         Args:
             project_root: Project root directory
+            config: Optional ProjectConfig to check for saved preferences
 
         Returns:
             Dictionary mapping categories to preferred base paths
         """
         preferences: Dict[str, Path] = {}
 
+        # Check config first if provided
+        if config:
+            location_pref = config.get("output.location")
+            if location_pref:
+                if location_pref == "Blueprint structure (Daily/, Procedural/, Long-Term/)":
+                    preferences["Daily"] = project_root / "Daily"
+                    preferences["Procedural"] = project_root / "Procedural"
+                    preferences["Long-Term"] = project_root / "Long-Term"
+                    return preferences
+                elif location_pref == "docs/ subdirectories (docs/daily/, docs/procedural/, docs/long-term/)":
+                    preferences["Daily"] = project_root / "docs" / "daily"
+                    preferences["Procedural"] = project_root / "docs" / "procedural"
+                    preferences["Long-Term"] = project_root / "docs" / "long-term"
+                    return preferences
+                elif location_pref == "Project root (all files in root directory)":
+                    preferences["Daily"] = project_root
+                    preferences["Procedural"] = project_root
+                    preferences["Long-Term"] = project_root
+                    return preferences
+                elif location_pref == "Custom path (specify below)":
+                    custom_path = config.get("output.location_custom", "")
+                    if custom_path:
+                        base_path = project_root / custom_path
+                        preferences["Daily"] = base_path / "daily"
+                        preferences["Procedural"] = base_path / "procedural"
+                        preferences["Long-Term"] = base_path / "long-term"
+                        return preferences
+
+        # Fall back to auto-detection based on existing structure
         # Check for existing blueprint structure
         daily_dir = project_root / "Daily"
         procedural_dir = project_root / "Procedural"

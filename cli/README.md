@@ -1,6 +1,6 @@
 # Diversity Standard CLI
 
-A command-line tool for inspecting and generating diversity and inclusion documentation for open source projects.
+A command-line tool for inspecting and generating best practices documents for your free and open source projects.
 
 ## Installation
 
@@ -44,161 +44,57 @@ pip install -e ".[dev]"
 
 ## Usage
 
-### Command Structure
+The CLI has 3 commands:
 
-All commands follow this pattern:
+### 1. Help
+
+Get help on commands:
+
 ```bash
-diversity-standard <command> [path] [options]
+diversity-standard --help
+diversity-standard <command> --help
 ```
 
-**Important**: Options like `--dry-run` are specific to each command, not global options.
+### 2. Inspect
 
-### Inspect a Project
-
-Check what diversity documentation already exists in your project:
+Check which documents already exists in your project:
 
 ```bash
 diversity-standard inspect [path]
 ```
 
-Example:
-```bash
-diversity-standard inspect /path/to/my-project
-# or
-diversity-standard inspect .
-```
-
-### Generate Missing Documents
-
-Generate missing documentation from templates with an interactive questionnaire:
-
-```bash
-diversity-standard generate [path] [options]
-```
-
 **Note**: `[path]` is optional and defaults to the current directory (`.`) if not specified.
 
-The `generate` command is **always interactive** and will guide you through:
+This command shows:
+- Found documents (with their locations)
+- Missing documents
+- Intentionally skipped documents (based on questionnaire answers)
+
+**Examples:**
+```bash
+diversity-standard inspect .
+diversity-standard inspect /path/to/my-project
+```
+
+### 3. Init
+
+Initialize your project with diversity standards documents personalized using a wizzard:
+
+```bash
+diversity-standard init [path] [--backup] [--force]
+```
+
+The `init` command will guide you through:
 1. Core project information (name, description, license, etc.)
 2. Document selection (choose which documents to generate)
 3. Category-specific questions (Daily, Procedural, Long-Term)
 4. Document-specific questions (customize individual documents)
 
-**Available options for `generate` command:**
-- `--dry-run` - Show what would be generated without creating files
+**Available options:**
 - `--backup` - Backup existing files before overwriting
-- `--force` - Overwrite existing files
-- `--config FILE` - Specify configuration file path
+- `--force` - Overwrite existing files without backup
 
-**Examples:**
-```bash
-# Dry run (preview without generating)
-# [path] can be omitted (defaults to current directory)
-diversity-standard generate --dry-run
-# Or specify [path] explicitly
-diversity-standard generate [path] --dry-run
-diversity-standard generate . --dry-run
-diversity-standard generate /path/to/project --dry-run
-
-# Generate with full questionnaire (default behavior)
-diversity-standard generate [path]
-diversity-standard generate .
-
-# Generate with backup
-diversity-standard generate [path] --backup
-diversity-standard generate . --backup
-```
-
-**Interactive Questionnaire:**
-The questionnaire guides you through personalizing your documentation:
-
-- **Core questions**: Project name, description, repository, license, maintainers, contact info
-- **Daily questions**: Contribution types, support channels, meeting preferences, code review philosophy
-- **Procedural questions**: Security policies, accessibility commitments, localization, funding, versioning
-- **Long-term questions**: Governance model, code of conduct enforcement, ownership structure
-
-Questions support conditional logic:
-- **Yes/No questions**: If you answer "no" to "Do you have funding?", FUNDING.md will be skipped
-- **Multiple choice**: Select governance model, and documents adapt accordingly
-- **Freeform text**: Provide custom text for key sections
-
-All answers are saved to `.diversity-standard.yml` for future use.
-
-### Initialize Configuration
-
-Create a configuration file with interactive prompts:
-
-```bash
-diversity-standard init [path] [options]
-```
-
-**Available options for `init` command:**
-- `--full` - Run full questionnaire (not just basic config)
-- `--config FILE` - Specify config file path
-
-**Basic mode** (default):
-Asks for core project information only.
-
-**Full mode** (`--full`):
-Runs the complete questionnaire to gather all information needed for personalized documents.
-
-This creates a `.diversity-standard.yml` file in your project root with project-specific information.
-
-**Examples:**
-```bash
-# Basic config
-diversity-standard init .
-
-# Full questionnaire
-diversity-standard init . --full
-```
-
-### Run Questionnaire Only
-
-Run the interactive questionnaire without generating documents:
-
-```bash
-diversity-standard questionnaire [path]
-```
-
-This is useful if you want to answer questions and save the configuration, then generate documents later.
-
-**Example:**
-```bash
-diversity-standard questionnaire .
-```
-
-### Quick Check
-
-Check if a project is compliant (useful for CI/CD):
-
-```bash
-diversity-standard check [path]
-```
-
-Exit code 0 if compliant, 1 if documents are missing.
-
-**Example:**
-```bash
-diversity-standard check .
-```
-
-## Getting Help
-
-To see all available commands:
-```bash
-diversity-standard --help
-```
-
-To see options for a specific command:
-```bash
-diversity-standard generate --help
-diversity-standard init --help
-```
-
-## Configuration
-
-The CLI uses a `.diversity-standard.yml` file in your project root for configuration. Example:
+Answers are saved to `.diversity-standard.yml` in the project root for future use.
 
 ```yaml
 project:
@@ -239,7 +135,7 @@ funding:
    - **Procedural**: Process documents (SECURITY.md, ACCESSIBILITY.md, etc.)
    - **Long-Term**: Governance documents (GOVERNANCE.md, CODE_OF_CONDUCT.md, etc.)
 
-3. **Questionnaire** (interactive mode):
+3. **Wizzard**:
    - Guides you through personalizing documents
    - Asks conditional questions (e.g., "Do you have funding?" → skips FUNDING.md if no)
    - Allows custom text input for key sections
@@ -261,49 +157,51 @@ The questionnaire uses conditional logic to personalize documents:
 - **If you select "custom" governance**: You're asked to describe your custom model
 - **If you emphasize non-code contributions**: CONTRIBUTING.md highlights this
 
-All answers are saved in `.diversity-standard.yml` for future use.
-
-## Document Discovery
-
-The tool finds documents regardless of their location. For example:
-- `docs/CONTRIBUTING.md` → Maps to Daily/CONTRIBUTING.md
-- `CODE_OF_CONDUCT.md` in root → Maps to Long-Term/CODE_OF_CONDUCT.md
-- `documentation/security.md` → Maps to Procedural/SECURITY.md
-
 ## Output Structure
 
-By default, the tool will:
-- Use existing blueprint structure if Daily/, Procedural/, Long-Term/ directories exist
-- Otherwise, create documents in `docs/` with subdirectories
-- Or place in project root if no docs/ directory exists
+During the wizard, you'll be asked where you want documents placed. Options include:
 
-You can customize this behavior via configuration.
+- **Blueprint structure**: `Daily/`, `Procedural/`, `Long-Term/` directories
+- **docs/ subdirectories**: `docs/daily/`, `docs/procedural/`, `docs/long-term/`
+- **Project root**: All files in the root directory
+- **Custom path**: Specify your own base path (e.g., `documentation` or `docs/policies`)
 
-## Development
+If you don't specify a preference, the tool auto-detects based on existing structure:
+- Uses blueprint structure if `Daily/`, `Procedural/`, or `Long-Term/` directories exist
+- Otherwise uses `docs/` subdirectories if `docs/` exists
+- Otherwise places files in project root
 
-### Running Tests
+Your choice is saved to `.diversity-standard.yml` and used for future document generation.
 
-```bash
-cd cli
-pytest tests/
-```
-
-### Project Structure
+## Project Structure
 
 ```
 cli/
-├── diversity_standard/
-│   ├── cli.py              # Main CLI entry point
-│   ├── inspector.py         # Document inspection logic
-│   ├── generator.py         # Template generation
-│   ├── config.py            # Configuration management
-│   ├── utils.py             # Utility functions
-│   └── document_mapping.yml # Document mapping rules
-└── tests/
-    └── test_cli.py
+├── diversity_standard/          # Python package
+│   ├── __init__.py
+│   ├── cli.py                   # Main CLI entry point
+│   ├── inspector.py             # Document inspection logic
+│   ├── generator.py              # Template generation
+│   ├── questionnaire.py         # Interactive questionnaire system
+│   ├── config.py                # Configuration management
+│   ├── utils.py                 # Utility functions
+│   ├── document_mapping.yml      # Document mapping rules
+│   ├── questions.yml             # Questionnaire definitions
+│   ├── template_examples.md     # Template syntax examples
+│   └── templates/                # Copied templates (via setup_templates.py)
+├── tests/
+│   ├── __init__.py
+│   └── test_cli.py
+├── setup.py                      # Package setup
+├── setup_templates.py            # Template copying script
+├── pyproject.toml                # Package configuration
+├── requirements.txt              # Python dependencies
+├── MANIFEST.in                   # Package manifest
+├── README.md                     # This file
+├── INSTALL.md                    # Installation guide
+└── QUESTIONNAIRE_GUIDE.md        # Questionnaire documentation
 ```
 
 ## License
 
 GPL-3.0 (same as the main repository)
-
