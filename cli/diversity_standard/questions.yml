@@ -1,0 +1,365 @@
+questions:
+  # Core questions
+  - id: "project_name"
+    type: "text"
+    text: "Project name"
+    category: "core"
+    auto_detect: true
+    required: true
+    affects: ["all"]
+  
+  - id: "project_description"
+    type: "freeform"
+    text: "Project description (what does your project do?)"
+    category: "core"
+    auto_detect: true
+    affects: ["all"]
+  
+  - id: "project_repository"
+    type: "text"
+    text: "Repository URL (e.g., https://github.com/org/project)"
+    category: "core"
+    auto_detect: true
+    affects: ["all"]
+  
+  - id: "maintainer_count"
+    type: "number"
+    text: "How many maintainers does your project have?"
+    category: "core"
+    default: 1
+    affects: ["MAINTAINERS.md"]
+  
+  - id: "license_type"
+    type: "multiple_choice"
+    text: "What license does your project use?"
+    category: "core"
+    options:
+      - "MIT"
+      - "Apache-2.0"
+      - "GPL-3.0"
+      - "GPL-2.0"
+      - "BSD-3-Clause"
+      - "BSD-2-Clause"
+      - "MPL-2.0"
+      - "LGPL-3.0"
+      - "Other"
+    auto_detect: true
+    affects: ["LICENSE.md"]
+  
+  - id: "license_rationale"
+    type: "freeform"
+    text: "Why did you choose this license? (optional)"
+    category: "core"
+    depends_on: "license_type"
+    affects: ["LICENSE.md"]
+  
+  - id: "support_email"
+    type: "text"
+    text: "Support contact email"
+    category: "core"
+    affects: ["SUPPORT.md"]
+  
+  - id: "security_email"
+    type: "text"
+    text: "Security contact email (can be same as support)"
+    category: "core"
+    default_from: "support_email"
+    affects: ["SECURITY.md"]
+  
+  - id: "document_location"
+    type: "multiple_choice"
+    text: "Where should documents be placed?"
+    category: "core"
+    options:
+      - "Blueprint structure (Daily/, Procedural/, Long-Term/)"
+      - "docs/ subdirectories (docs/daily/, docs/procedural/, docs/long-term/)"
+      - "Project root (all files in root directory)"
+      - "Custom path (specify below)"
+    default: 0
+    affects: ["all"]
+  
+  - id: "document_location_custom"
+    type: "text"
+    text: "Custom base path for documents (relative to project root, e.g., 'documentation' or 'docs/policies')"
+    category: "core"
+    depends_on: "document_location"
+    show_if: "Custom path (specify below)"
+    affects: ["all"]
+  
+  # Daily Operations Questions
+  - id: "emphasize_non_code"
+    type: "yes_no"
+    text: "Do you want to emphasize non-code contributions in CONTRIBUTING.md?"
+    category: "daily"
+    default: true
+    affects: ["CONTRIBUTING.md"]
+  
+  - id: "contribution_types"
+    type: "freeform"
+    text: "What types of contributions do you accept? (e.g., code, docs, design, translation)"
+    category: "daily"
+    depends_on: "emphasize_non_code"
+    show_if: true
+    affects: ["CONTRIBUTING.md"]
+  
+  - id: "support_channels"
+    type: "multiple_choice"
+    text: "Where can users get help? (select all that apply)"
+    category: "daily"
+    multiple: true
+    options:
+      - "GitHub Issues"
+      - "GitHub Discussions"
+      - "Email"
+      - "Chat/Slack/Discord"
+      - "Forum"
+      - "Other"
+    affects: ["SUPPORT.md"]
+  
+  - id: "support_response_time"
+    type: "text"
+    text: "What is typical response time for support requests?"
+    category: "daily"
+    default: "a few days"
+    affects: ["SUPPORT.md"]
+  
+  - id: "has_meetings"
+    type: "yes_no"
+    text: "Does your project hold regular meetings?"
+    category: "daily"
+    default: false
+    affects: ["MEETINGS.md"]
+    if_no:
+      skip_documents: ["MEETINGS.md"]
+    if_yes:
+      - id: "meeting_frequency"
+        type: "text"
+        text: "How often do you meet? (e.g., weekly, monthly)"
+        category: "daily"
+  
+  - id: "code_review_philosophy"
+    type: "freeform"
+    text: "What is your code review philosophy? (optional)"
+    category: "daily"
+    affects: ["CODE_REVIEW.md"]
+  
+  - id: "communication_style"
+    type: "freeform"
+    text: "Describe your communication style and preferences (e.g., async-first, formal vs informal)"
+    category: "daily"
+    affects: ["communication-practices.md"]
+  
+  - id: "communication_channels"
+    type: "multiple_choice"
+    text: "What are your primary communication channels? (select all that apply)"
+    category: "daily"
+    multiple: true
+    options:
+      - "GitHub Issues"
+      - "GitHub Discussions"
+      - "Email lists"
+      - "Chat/Slack/Discord"
+      - "Forums"
+      - "Other"
+    affects: ["communication-practices.md"]
+  
+  # Procedural Questions
+  - id: "security_reporting_method"
+    type: "text"
+    text: "How should security issues be reported? (e.g., security@example.com)"
+    category: "procedural"
+    default_from: "security_email"
+    affects: ["SECURITY.md"]
+  
+  - id: "security_disclosure_policy"
+    type: "freeform"
+    text: "What is your security disclosure policy? (e.g., 30-90 days after fix)"
+    category: "procedural"
+    default: "Coordinated disclosure after fix is available"
+    affects: ["SECURITY.md"]
+  
+  - id: "has_accessibility_commitment"
+    type: "yes_no"
+    text: "Do you have accessibility commitments or standards?"
+    category: "procedural"
+    default: true
+    affects: ["ACCESSIBILITY.md"]
+    if_yes:
+      - id: "accessibility_approach"
+        type: "freeform"
+        text: "Describe your accessibility approach"
+        category: "procedural"
+  
+  - id: "supports_multiple_languages"
+    type: "yes_no"
+    text: "Do you support multiple languages or localizations?"
+    category: "procedural"
+    default: false
+    affects: ["LOCALIZATION.md"]
+    if_no:
+      skip_documents: ["LOCALIZATION.md"]
+    if_yes:
+      - id: "supported_languages"
+        type: "text"
+        text: "Which languages do you support? (comma-separated)"
+        category: "procedural"
+  
+  - id: "has_funding"
+    type: "yes_no"
+    text: "Does your project receive funding (grants, sponsorships, donations)?"
+    category: "procedural"
+    default: false
+    affects: ["FUNDING.md"]
+    if_no:
+      skip_documents: ["FUNDING.md"]
+    if_yes:
+      - id: "funding_sources"
+        type: "freeform"
+        text: "Describe your funding sources"
+        category: "procedural"
+  
+  - id: "maintains_changelog"
+    type: "yes_no"
+    text: "Do you maintain a changelog?"
+    category: "procedural"
+    default: true
+    affects: ["CHANGELOG.md"]
+  
+  - id: "versioning_scheme"
+    type: "multiple_choice"
+    text: "What versioning scheme do you use?"
+    category: "procedural"
+    options:
+      - "Semantic Versioning (semver)"
+      - "Calendar Versioning (calver)"
+      - "Custom"
+      - "No formal versioning"
+    default: "Semantic Versioning (semver)"
+    depends_on: "maintains_changelog"
+    show_if: true
+    affects: ["CHANGELOG.md"]
+  
+  - id: "tracks_adopters"
+    type: "yes_no"
+    text: "Do you want to track and list project adopters?"
+    category: "procedural"
+    default: false
+    affects: ["ADOPTERS.md"]
+    if_no:
+      skip_documents: ["ADOPTERS.md"]
+    if_yes:
+      - id: "adopter_submission_process"
+        type: "freeform"
+        text: "How can adopters submit their information? (e.g., via PR, issue, form)"
+        category: "procedural"
+  
+  - id: "maintains_decision_log"
+    type: "yes_no"
+    text: "Do you maintain a decision log for tracking important decisions?"
+    category: "procedural"
+    default: true
+    affects: ["decision-log.md"]
+    if_yes:
+      - id: "decision_log_process"
+        type: "freeform"
+        text: "How are decisions recorded in your decision log? (optional)"
+        category: "procedural"
+  
+  - id: "has_role_rotation"
+    type: "yes_no"
+    text: "Do you practice role rotation for recurring roles?"
+    category: "procedural"
+    default: true
+    affects: ["role-rotation.md"]
+    if_yes:
+      - id: "role_rotation_frequency"
+        type: "text"
+        text: "How often are roles rotated? (e.g., monthly, quarterly)"
+        category: "procedural"
+        default: "monthly"
+  
+  - id: "conducts_audits"
+    type: "yes_no"
+    text: "Do you conduct periodic audits of project practices?"
+    category: "procedural"
+    default: true
+    affects: ["audit-checklist.md"]
+    if_yes:
+      - id: "audit_frequency"
+        type: "text"
+        text: "How often are audits conducted? (e.g., quarterly, annually)"
+        category: "procedural"
+        default: "annually"
+      - id: "audit_reviewers"
+        type: "freeform"
+        text: "Who typically conducts audits? (e.g., maintainers, external reviewers)"
+        category: "procedural"
+  
+  # Long-Term Questions
+  - id: "governance_model"
+    type: "multiple_choice"
+    text: "What governance model does your project use?"
+    category: "long_term"
+    options:
+      - "consensus-seeking"
+      - "council-based"
+      - "voting-based"
+      - "benevolent-dictator"
+      - "custom"
+    default: "consensus-seeking"
+    affects: ["GOVERNANCE.md"]
+    if_custom:
+      - id: "governance_custom"
+        type: "freeform"
+        text: "Describe your custom governance model"
+        category: "long_term"
+  
+  - id: "governance_participants"
+    type: "freeform"
+    text: "Who participates in governance? (e.g., maintainers, contributors, community)"
+    category: "long_term"
+    depends_on: "governance_model"
+    affects: ["GOVERNANCE.md"]
+  
+  - id: "code_of_conduct_enforcement"
+    type: "multiple_choice"
+    text: "How is the Code of Conduct enforced?"
+    category: "long_term"
+    options:
+      - "Restorative process (preferred)"
+      - "Traditional enforcement"
+      - "Hybrid approach"
+    default: "Restorative process (preferred)"
+    affects: ["CODE_OF_CONDUCT.md", "restorative-process.md"]
+  
+  - id: "coc_reporting_contact"
+    type: "text"
+    text: "Code of Conduct reporting contact (email or other)"
+    category: "long_term"
+    default_from: "support_email"
+    affects: ["CODE_OF_CONDUCT.md"]
+  
+  - id: "ownership_structure"
+    type: "freeform"
+    text: "How is ownership/accountability structured? (optional)"
+    category: "long_term"
+    affects: ["OWNERSHIP.md"]
+  
+  - id: "maintainer_selection_process"
+    type: "freeform"
+    text: "How are maintainers selected? (optional)"
+    category: "long_term"
+    affects: ["MAINTAINERS.md"]
+  
+  - id: "maintainer_stepdown_process"
+    type: "freeform"
+    text: "How can maintainers step down? (optional)"
+    category: "long_term"
+    affects: ["MAINTAINERS.md"]
+  
+  - id: "credit_approach"
+    type: "freeform"
+    text: "How do you want to credit contributors? (e.g., by name, by role, in changelog)"
+    category: "long_term"
+    affects: ["CREDIT.md"]
+

@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "diversity-standard"
+version = "0.1.0"
+description = "CLI tool for adopting diversity and inclusion standards in open source projects"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "GPL-3.0"}
+authors = [
+    {name = "Diversity Standard Contributors"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+dependencies = [
+    "click>=8.0.0",
+    "pyyaml>=6.0",
+    "jinja2>=3.0.0",
+    "rich>=13.0.0",
+]
+
+[project.scripts]
+diversity-standard = "diversity_standard.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Apress/Diversifying-Open-Source"
+Repository = "https://github.com/Apress/Diversifying-Open-Source"
+

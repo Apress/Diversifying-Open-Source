@@ -1,0 +1,109 @@
+documents:
+  # Daily documents
+  CONTRIBUTING.md:
+    filenames: ["CONTRIBUTING.md", "CONTRIBUTING", "contributing.md", "CONTRIBUTING.txt", "contributing.txt"]
+    content_keywords: ["how to contribute", "contributing guidelines", "contribution", "contributing to"]
+    category: "Daily"
+  
+  SUPPORT.md:
+    filenames: ["SUPPORT.md", "SUPPORT", "support.md", "SUPPORT.txt"]
+    content_keywords: ["support", "getting help", "where to ask", "help and support"]
+    category: "Daily"
+  
+  CODE_REVIEW.md:
+    filenames: ["CODE_REVIEW.md", "CODE_REVIEW", "code-review.md", "REVIEW.md", "review.md"]
+    content_keywords: ["code review", "review guidelines", "review process", "reviewing code"]
+    category: "Daily"
+  
+  MEETINGS.md:
+    filenames: ["MEETINGS.md", "MEETINGS", "meetings.md"]
+    content_keywords: ["meetings", "meeting notes", "meeting schedule"]
+    category: "Daily"
+  
+  communication-practices.md:
+    filenames: ["communication-practices.md", "COMMUNICATION.md", "communication.md", "COMMUNICATION_PRACTICES.md"]
+    content_keywords: ["communication practices", "communication guidelines", "how we communicate"]
+    category: "Daily"
+  
+  # Procedural documents
+  SECURITY.md:
+    filenames: ["SECURITY.md", "SECURITY", "security.md", "SECURITY.txt", "security.txt"]
+    content_keywords: ["security policy", "reporting a vulnerability", "security issue", "security"]
+    category: "Procedural"
+  
+  ACCESSIBILITY.md:
+    filenames: ["ACCESSIBILITY.md", "ACCESSIBILITY", "accessibility.md", "a11y.md", "A11Y.md"]
+    content_keywords: ["accessibility", "a11y", "wcag", "accessible"]
+    category: "Procedural"
+  
+  LOCALIZATION.md:
+    filenames: ["LOCALIZATION.md", "LOCALIZATION", "localization.md", "i18n.md", "I18N.md"]
+    content_keywords: ["localization", "internationalization", "i18n", "translation"]
+    category: "Procedural"
+  
+  FUNDING.md:
+    filenames: ["FUNDING.md", "FUNDING", "funding.md", "SPONSORS.md", "sponsors.md"]
+    content_keywords: ["funding", "sponsors", "financial", "donations"]
+    category: "Procedural"
+  
+  CHANGELOG.md:
+    filenames: ["CHANGELOG.md", "CHANGELOG", "changelog.md", "CHANGES.md", "changes.md", "HISTORY.md"]
+    content_keywords: ["changelog", "changes", "release notes", "what's new"]
+    category: "Procedural"
+  
+  ADOPTERS.md:
+    filenames: ["ADOPTERS.md", "ADOPTERS", "adopters.md", "USERS.md", "users.md"]
+    content_keywords: ["adopters", "who uses", "organizations using"]
+    category: "Procedural"
+  
+  decision-log.md:
+    filenames: ["decision-log.md", "DECISION_LOG.md", "decision_log.md", "DECISIONS.md", "decisions.md"]
+    content_keywords: ["decision log", "decisions", "decision record", "adr"]
+    category: "Procedural"
+  
+  role-rotation.md:
+    filenames: ["role-rotation.md", "ROLE_ROTATION.md", "role_rotation.md"]
+    content_keywords: ["role rotation", "rotating roles", "role rotation"]
+    category: "Procedural"
+  
+  audit-checklist.md:
+    filenames: ["audit-checklist.md", "AUDIT_CHECKLIST.md", "audit_checklist.md", "AUDIT.md"]
+    content_keywords: ["audit checklist", "audit", "checklist"]
+    category: "Procedural"
+  
+  # Long-Term documents
+  CODE_OF_CONDUCT.md:
+    filenames: ["CODE_OF_CONDUCT.md", "CODE_OF_CONDUCT", "code-of-conduct.md", "COC.md", "coc.md", "CONDUCT.md"]
+    content_keywords: ["code of conduct", "behavioral expectations", "community guidelines", "conduct"]
+    category: "Long-Term"
+  
+  GOVERNANCE.md:
+    filenames: ["GOVERNANCE.md", "GOVERNANCE", "governance.md"]
+    content_keywords: ["governance", "decision-making", "authority", "leadership", "governance model"]
+    category: "Long-Term"
+  
+  OWNERSHIP.md:
+    filenames: ["OWNERSHIP.md", "OWNERSHIP", "ownership.md"]
+    content_keywords: ["ownership", "accountability", "stewardship"]
+    category: "Long-Term"
+  
+  MAINTAINERS.md:
+    filenames: ["MAINTAINERS.md", "MAINTAINERS", "maintainers.md", "MAINTAINER.md"]
+    content_keywords: ["maintainers", "maintainer", "who maintains"]
+    category: "Long-Term"
+  
+  LICENSE.md:
+    filenames: ["LICENSE.md", "LICENSE", "license.md"]
+    content_keywords: ["license", "licensing", "license information"]
+    category: "Long-Term"
+  
+  CREDIT.md:
+    filenames: ["CREDIT.md", "CREDIT", "credit.md", "CREDITS.md", "credits.md", "ACKNOWLEDGMENTS.md"]
+    content_keywords: ["credit", "credits", "acknowledgments", "attribution"]
+    category: "Long-Term"
+  
+  restorative-process.md:
+    filenames: ["restorative-process.md", "RESTORATIVE_PROCESS.md", "restorative_process.md"]
+    content_keywords: ["restorative process", "restorative", "conflict resolution"]
+    category: "Long-Term"
+
